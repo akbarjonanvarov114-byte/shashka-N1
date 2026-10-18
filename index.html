@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Multi-Portal v3</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <!-- Yuqori Neon Menyu -->
+    <header class="neon-nav">
+        <div class="neon-logo">⚡ CYBER<span>PORTAL</span></div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#" class="cyber-link active" data-tab="home">Bosh sahifa</a></li>
+                <li><a href="#" class="cyber-link" data-tab="sport">Sport / Kaloriya</a></li>
+                <li><a href="#" class="cyber-link" data-tab="social">Ijtimoiy Devor</a></li>
+                <li><a href="#" class="cyber-link" data-tab="shop">Cyber Do'kon</a></li>
+                <li><a href="#" class="cyber-link" data-tab="finance">Moliya Testi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Kontent Bloklari -->
+    <main class="container">
+
+        <!-- BOSH SAHIFA -->
+        <section id="home" class="cyber-page active">
+            <div class="cyber-hero">
+                <h1>Kelajak Texnologiyalari Portali</h1>
+                <p>To'q rejim va yuqori tezlikda ishlovchi interaktiv boshqaruv paneli.</p>
+            </div>
+            <div class="neon-grid">
+                <div class="neon-card cyan" onclick="switchTab('sport')">
+                    <h3>🏃 Qadam & Kaloriya</h3>
+                    <p>Sport faolligini nazorat qiling.</p>
+                </div>
+                <div class="neon-card purple" onclick="switchTab('social')">
+                    <h3>💬 Fikrlar Devori</h3>
+                    <p>Ijtimoiy g'oyalaringizni yozib qoldiring.</p>
+                </div>
+                <div class="neon-card green" onclick="switchTab('shop')">
+                    <h3>🛍️ Chegirmali Do'kon</h3>
+                    <p>Promo-kodlar bilan arzon xaridlar.</p>
+                </div>
+                <div class="neon-card red" onclick="switchTab('finance')">
+                    <h3>🧠 Moliya Savodxonligi</h3>
+                    <p>Moliyaviy IQ darajangizni aniqlang.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOG'LIQ VA SPORT -->
+        <section id="sport" class="cyber-page">
+            <h2>🏃 Faollik va Kaloriya Hisoblagich</h2>
+            <div class="cyber-grid-2">
+                <div class="neon-box">
+                    <h3>Qadamlarni hisoblash</h3>
+                    <label>Bugun necha qadam bosdingiz?</label>
+                    <input type="number" id="steps-input" placeholder="Masalan: 8000">
+                    <button class="cyber-btn cyan-btn" onclick="calculateCalories()">Hisoblash</button>
+                    <div id="calories-result" class="neon-text"></div>
+                </div>
+                <div class="neon-box">
+                    <h3>Sport Tavsiyasi</h3>
+                    <p>Vaznni normada saqlash va yurak qon-tomir tizimini yaxshilash uchun kuniga kamida <b>10,000
+                            qadam</b> yurish tavsiya etiladi.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- IJTIMOIY LOYIHA -->
+        <section id="social" class="cyber-page">
+            <h2>💬 «Ochiq Muloqot» Ijtimoiy Fikrlar Devori</h2>
+            <p>Yurtimiz va jamiyatimiz rivoji uchun o'z ijtimoiy loyiha g'oyangizni yozib qoldiring.</p>
+
+            <div class="cyber-grid-2">
+                <div class="neon-box">
+                    <h3>G'oya qo'shish</h3>
+                    <input type="text" id="user-name" placeholder="Ismingiz">
+                    <textarea id="user-idea" placeholder="G'oyangiz yoki taklifingiz..." rows="4"></textarea>
+                    <button class="cyber-btn purple-btn" onclick="addIdea()">Yuborish</button>
+                </div>
+                <div class="neon-box">
+                    <h3>Kelib tushgan g'oyalar</h3>
+                    <div id="ideas-wall" class="scroll-box">
+                        <div class="idea-item"><b>Ali:</b> Maktablarda ekologiya darslarini ko'paytirish kerak.</div>
+                        <div class="idea-item"><b>Zuhra:</b> Shahar ichida velosiped yo'lakchalarini kengaytirish zarur.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERNET DO'KON -->
+        <section id="shop" class="cyber-page">
+            <h2>🛍️ Cyber Do'kon (Promo-kod tizimi)</h2>
+            <p>Maxsus <b>"CYBER20"</b> promo-kodini ishlating va 20% chegirmaga ega bo'ling!</p>
+
+            <div class="shop-container">
+                <div class="items-list">
+                    <div class="shop-card-v3">
+                        <h4>Ultra Smart Watch</h4>
+                        <p>Narxi: <span class="old-price">600,000</span> -> <b class="new-price">500,000 so'm</b></p>
+                        <button class="cyber-btn green-btn" onclick="selectProduct(500000)">Tanlash</button>
+                    </div>
+                    <div class="shop-card-v3">
+                        <h4>Cyberpunk Gaming Mouse</h4>
+                        <p>Narxi: <span class="old-price">300,000</span> -> <b class="new-price">250,000 so'm</b></p>
+                        <button class="cyber-btn green-btn" onclick="selectProduct(250000)">Tanlash</button>
+                    </div>
+                </div>
+
+                <div class="neon-box checkout-box">
+                    <h3>Buyurtma hisobi</h3>
+                    <p>Tanlangan mahsulot narxi: <b id="selected-price">0</b> so'm</p>
+                    <input type="text" id="promo-input" placeholder="Promo-kodni kiriting">
+                    <button class="cyber-btn" onclick="applyPromo()">Kuponni qo'llash</button>
+                    <hr>
+                    <p>To'lov uchun yakuniy summa: <span id="final-price"
+                            style="color: #2ecc71; font-weight: bold;">0</span> so'm</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MOLIYAVIY SAVODXONLIK -->
+        <section id="finance" class="cyber-page">
+            <h2>🧠 Moliyaviy Savodxonlik Testi</h2>
+            <p>O'z moliyaviy bilimingizni tezkor test orqali sinab ko'ring.</p>
+
+            <div class="neon-box" id="quiz-container">
+                <h3 id="question-text">Sizningcha, "Aktiv" nima?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-btn" onclick="checkAnswer(true)">Sizning cho'ntagingizga pul olib keladigan
+                        narsa (Biznes, investitsiya)</button>
+                    <button class="quiz-btn" onclick="checkAnswer(false)">Sizning cho'ntagingizdan pul olib ketadigan
+                        narsa (Mashina, kredit)</button>
+                </div>
+                <div id="quiz-feedback" class="neon-text"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
